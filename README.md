@@ -1,0 +1,2 @@
+# installer
+Arikaim CMS installers
