@@ -9,17 +9,31 @@
  */
 namespace Arikaim\Installer;
 
-use Composer\Composer;
-use Composer\IO\IOInterface;
-use Composer\Plugin\PluginInterface;
+use Composer\Package\PackageInterface;
+use Composer\Installer\LibraryInstaller;
 
-class InstallerPlugin implements PluginInterface
+class ArikaimInstaller extends LibraryInstaller
 {
 
-    public function activate(Composer $composer, IOInterface $io)
+    protected $locations = [
+        'arikaim-template'  => 'arikaim/view/templates',
+        'arikaim-module'    => 'arikaim/modules',
+        'arikaim-extension' => 'arikaim/extensions',
+        'arikaim-library'   => 'arikaim/view/library'    
+    ];
+
+    public function getInstallPath(PackageInterface $package)
     {
-        $installer = new ArikaimInstaller($io, $composer);
-        $composer->getInstallationManager()->addInstaller($installer);
+        $package_name = $package->getPrettyName();
+        if (isset($this->locations[$package_name]) == false) {
+            throw new \InvalidArgumentException("Not spupported package type '$package_name' ");               
+        }
+        $path = $this->locations[$package_name];
+        return $path;
     }
 
+    public function supports($packageType)
+    {
+        return array_key_exists($packageType,$this->locations);
+    }
 }
