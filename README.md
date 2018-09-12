@@ -1,6 +1,6 @@
 # installer
 Arikaim CMS installers
-#package types
+# package types
     arikaim-template
     arikaim-module
     arikaim-extension
