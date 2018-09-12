@@ -29,7 +29,7 @@ class ArikaimInstaller extends LibraryInstaller
         if (isset($this->locations[$type]) == false) {
             throw new \InvalidArgumentException("Not spupported package type: '$type' ");               
         }
-        $path = $this->locations[$package_name];
+        $path = $this->locations[$type];
         return $path;
     }
 
