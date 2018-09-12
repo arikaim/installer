@@ -26,11 +26,16 @@ class ArikaimInstaller extends LibraryInstaller
     {
         $package_name = $package->getPrettyName();
         $type = $package->getType();
+        $extra = $package->getExtra();
+        if (isset($extra['path']) == true) {
+            $path = DIRECTORY_SEPARATOR . $extra['path'];
+        } else {
+            $path = "";
+        }
         if (isset($this->locations[$type]) == false) {
             throw new \InvalidArgumentException("Not spupported package type: '$type' ");               
         }
-        $path = $this->locations[$type];
-        return $path;
+        return $this->locations[$type] . $path;
     }
 
     public function supports($packageType)
