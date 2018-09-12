@@ -15,11 +15,9 @@ use Composer\Plugin\PluginInterface;
 
 class InstallerPlugin implements PluginInterface
 {
-
     public function activate(Composer $composer, IOInterface $io)
     {
         $installer = new ArikaimInstaller($io, $composer);
         $composer->getInstallationManager()->addInstaller($installer);
     }
-
 }
