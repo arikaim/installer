@@ -27,7 +27,7 @@ class ArikaimInstaller extends LibraryInstaller
         $package_name = $package->getPrettyName();
         $type = $package->getType();
         if (isset($this->locations[$type]) == false) {
-            throw new \InvalidArgumentException("Not spupported package type '$type' ");               
+            throw new \InvalidArgumentException("Not spupported package type: '$type' ");               
         }
         $path = $this->locations[$package_name];
         return $path;
