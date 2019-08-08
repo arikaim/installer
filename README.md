@@ -5,3 +5,4 @@ Arikaim CMS installers
     arikaim-module
     arikaim-extension
     arikaim-library
+    arikaim-component
