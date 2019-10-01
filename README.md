@@ -12,6 +12,7 @@ Arikaim CMS installer
     arikaim-extension
     arikaim-library
     arikaim-component
+    arikaim-project
 
 ### Install
 ```
