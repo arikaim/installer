@@ -13,8 +13,18 @@ use Composer\Composer;
 use Composer\IO\IOInterface;
 use Composer\Plugin\PluginInterface;
 
+/**
+ * Installer plugin
+ */
 class InstallerPlugin implements PluginInterface
 {
+    /**
+     * Activate plugin
+     *
+     * @param Composer $composer
+     * @param IOInterface $io
+     * @return void
+     */
     public function activate(Composer $composer, IOInterface $io)
     {
         $installer = new ArikaimInstaller($io, $composer);
