@@ -24,7 +24,8 @@ class ArikaimInstaller extends LibraryInstaller
         'arikaim-module'    => 'arikaim/modules',
         'arikaim-extension' => 'arikaim/extensions',
         'arikaim-library'   => 'arikaim/view/library',
-        'arikaim-component'  => 'arikaim/view/components',    
+        'arikaim-component' => 'arikaim/view/components',    
+        'arikaim-project'   => '/',    
     ];
 
     /**
