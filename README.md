@@ -6,7 +6,7 @@
 ## Installer
 Arikaim CMS installer
 
-## package types
+## Package types
     arikaim-template
     arikaim-module
     arikaim-extension
@@ -14,6 +14,7 @@ Arikaim CMS installer
     arikaim-component
     arikaim-project
     arikaim-service
+    
 ### Install
 ```
 composer require arikaim/installer
