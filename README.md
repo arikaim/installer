@@ -1,7 +1,6 @@
-<p align="center">
-    <img src="https://img.shields.io/github/release/arikaim/installer.svg" alt="version: 1.0.0">
-    <img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="license: GPL3">
-</p>
+## Arikaim CMS Installer
+![version: 1.0.0](https://img.shields.io/github/release/arikaim/installer.svg)
+![license: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
 
 ## Installer
 Arikaim CMS installer
@@ -15,8 +14,8 @@ Arikaim CMS installer
     arikaim-project
     arikaim-service
     
-### Install
-```
-composer require arikaim/installer
+### Installation
 
+```sh
+composer require arikaim/installer
 ```
