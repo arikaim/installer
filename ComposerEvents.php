@@ -19,18 +19,36 @@ use Closure;
 class ComposerEvents
 {   
     /**
-     * On update callback
+     * On package update callback
      *
      * @var Closure|null
      */
     protected static $onPackageUpdateCallback = null;
 
     /**
-     * On install callback
+     * On package install callback
      *
      * @var Closure|null
      */
     protected static $onPackageInstallCallback = null;
+
+    /**
+     * On post update callback
+     *
+     * @var Closure|null
+     */
+    protected static $onPostUpdate = null;
+
+    /**
+     * Set on post update callback
+     *
+     * @param Closure $callback
+     * @return void
+     */
+    public static function onPostUpdate($callback): void
+    {
+        Self::$onPostUpdate = $callback;
+    }
 
     /**
      * Set on update callback
@@ -52,6 +70,17 @@ class ComposerEvents
     public static function onPackageInstall($callback): void
     {
         Self::$onPackageInstallCallback = $callback;
+    }
+
+    /**
+     * Post update event
+     *
+     * @param Event $event
+     * @return void
+     */
+    public static function postUpdate(Event $event)
+    {
+        Self::callback(Self::$onPostUpdate,$event);     
     }
 
     /**
