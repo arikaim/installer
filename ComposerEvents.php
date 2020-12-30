@@ -40,6 +40,24 @@ class ComposerEvents
     protected static $onPostUpdate = null;
 
     /**
+     * On pre update callback
+     *
+     * @var Closure|null
+     */
+    protected static $onPreUpdate = null;
+
+    /**
+     * Set on pre update callback
+     *
+     * @param Closure $callback
+     * @return void
+     */
+    public static function onPreUpdate($callback): void
+    {
+        Self::$onPreUpdate = $callback;
+    }
+
+    /**
      * Set on post update callback
      *
      * @param Closure $callback
@@ -73,7 +91,7 @@ class ComposerEvents
     }
 
     /**
-     * Post update event
+     * Post post update event
      *
      * @param Event $event
      * @return void
@@ -81,6 +99,17 @@ class ComposerEvents
     public static function postUpdate(Event $event)
     {
         Self::callback(Self::$onPostUpdate,$event);     
+    }
+
+     /**
+     * Post pre update event
+     *
+     * @param Event $event
+     * @return void
+     */
+    public static function preUpdate(Event $event)
+    {
+        Self::callback(Self::$onPreUpdate,$event);     
     }
 
     /**
