@@ -23,14 +23,14 @@ class ComposerEvents
      *
      * @var Closure|null
      */
-    protected static $onUpdateCallback = null;
+    protected static $onPackageUpdateCallback = null;
 
     /**
      * On install callback
      *
      * @var Closure|null
      */
-    protected static $onInstallCallback = null;
+    protected static $onPackageInstallCallback = null;
 
     /**
      * Set on update callback
@@ -38,9 +38,9 @@ class ComposerEvents
      * @param Closure $callback
      * @return void
      */
-    public static function onUpdate($callback): void
+    public static function onPackageUpdate($callback): void
     {
-        Self::$onInstallCallback = $callback;
+        Self::$onPackageUpdateCallback = $callback;
     }
 
     /**
@@ -49,9 +49,9 @@ class ComposerEvents
      * @param Closure $callback
      * @return void
     */
-    public static function onInstall($callback): void
+    public static function onPackageInstall($callback): void
     {
-        Self::$onUpdateCallback = $callback;
+        Self::$onPackageInstallCallback = $callback;
     }
 
     /**
@@ -61,9 +61,8 @@ class ComposerEvents
      * @return void
      */
     public static function postPackageInstall(PackageEvent $event)
-    {
-        $package = $event->getOperation()->getPackage();
-        Self::callback(Self::$onInstallCallback,$package);
+    {      
+        Self::callback(Self::$onPackageInstallCallback,$event);
     }
     
     /**
@@ -73,22 +72,21 @@ class ComposerEvents
      * @return void
     */
     public static function postPackageUpdate(PackageEvent $event)
-    {
-        $package = $event->getOperation()->getPackage();
-        Self::callback(Self::$onUpdateCallback,$package);
+    {       
+        Self::callback(Self::$onPackageUpdateCallback,$event);
     }
 
     /**
      * Callback helper
      *
      * @param Closure|null $callback
-     * @param mixed $param
+     * @param mixed $event
      * @return void
      */
-    private static function callback($callback, $param): void
+    private static function callback($callback, $event): void
     {
         if (\is_callable($callback) == true) {
-            $callback($param);
+            $callback($event);
         }        
     }
 }
