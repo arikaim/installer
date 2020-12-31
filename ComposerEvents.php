@@ -120,7 +120,8 @@ class ComposerEvents
      */
     public static function postPackageInstall(PackageEvent $event)
     {      
-        Self::callback(Self::$onPackageInstallCallback,$event);
+        $package = Self::getPackage($event);
+        Self::callback(Self::$onPackageInstallCallback,$package);
     }
     
     /**
@@ -131,7 +132,8 @@ class ComposerEvents
     */
     public static function postPackageUpdate(PackageEvent $event)
     {       
-        Self::callback(Self::$onPackageUpdateCallback,$event);
+        $package = Self::getPackage($event);
+        Self::callback(Self::$onPackageUpdateCallback,$package);
     }
 
     /**
@@ -146,5 +148,19 @@ class ComposerEvents
         if (\is_callable($callback) == true) {
             $callback($event);
         }        
+    }
+
+    /**
+     * Returns the package associated with $event
+     *
+     * @param PackageEvent $event Package event
+     * @return object
+     */
+    public static function getPackage(PackageEvent $event)
+    {       
+        $operation = $event->getOperation();
+        $package = \method_exists($operation, 'getPackage') ? $operation->getPackage() : $operation->getInitialPackage();
+
+        return $package;
     }
 }
