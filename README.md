@@ -10,7 +10,7 @@ Arikaim CMS installer
     arikaim-module
     arikaim-extension
     arikaim-library
-    arikaim-component
+    arikaim-components-library
     arikaim-project
     arikaim-service
     

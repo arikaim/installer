@@ -20,13 +20,15 @@ class ArikaimInstaller extends LibraryInstaller
      * @var array
      */
     protected $locations = [
-        'arikaim-template'  => 'arikaim/view/templates',
-        'arikaim-module'    => 'arikaim/modules',
-        'arikaim-service'   => 'arikaim/services',
-        'arikaim-extension' => 'arikaim/extensions',
-        'arikaim-library'   => 'arikaim/view/library',
-        'arikaim-component' => 'arikaim/view/components',    
-        'arikaim-project'   => '/',    
+        'arikaim-template'           => 'arikaim/view/templates',
+        'arikaim-module'             => 'arikaim/modules',
+        'arikaim-service'            => 'arikaim/services',
+        'arikaim-extension'          => 'arikaim/extensions',
+        'arikaim-library'            => 'arikaim/view/library',         
+        'arikaim-components-library' => 'arikaim/view/components',    
+        'arikaim-project'            => '/',    
+        // deprecated
+        'arikaim-component' => 'arikaim/view/components'  
     ];
 
     /**
