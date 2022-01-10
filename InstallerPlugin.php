@@ -3,7 +3,7 @@
  * Arikaim
  *
  * @link        http://www.arikaim.com
- * @copyright   Copyright (c) 2017-2019 Konstantin Atanasov <info@arikaim.com>
+ * @copyright   Copyright (c) Konstantin Atanasov <info@arikaim.com>
  * @license     http://www.arikaim.com/license
  * 
  */
@@ -27,7 +27,7 @@ class InstallerPlugin implements PluginInterface
      */
     public function activate(Composer $composer, IOInterface $io)
     {
-        $installer = new ArikaimInstaller($io, $composer);
+        $installer = new ArikaimInstaller($io,$composer);
         $composer->getInstallationManager()->addInstaller($installer);
     }
 
@@ -40,9 +40,17 @@ class InstallerPlugin implements PluginInterface
      */
     public function deactivate(Composer $composer, IOInterface $io)
     {
-        $composer->getInstallationManager()->removeInstaller($this->installer);
+        $installer = new ArikaimInstaller($io,$composer);
+        $composer->getInstallationManager()->removeInstaller($installer);
     }
 
+    /**
+     * Uninstall plugin
+     *
+     * @param Composer $composer
+     * @param IOInterface $io
+     * @return void
+     */
     public function uninstall(Composer $composer, IOInterface $io)
     {
     }

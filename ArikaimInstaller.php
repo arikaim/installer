@@ -3,7 +3,7 @@
  * Arikaim
  *
  * @link        http://www.arikaim.com
- * @copyright   Copyright (c) 2017-2019 Konstantin Atanasov <info@arikaim.com>
+ * @copyright   Copyright (c) Konstantin Atanasov <info@arikaim.com>
  * @license     http://www.arikaim.com/license
  * 
  */
@@ -12,6 +12,9 @@ namespace Arikaim\Installer;
 use Composer\Package\PackageInterface;
 use Composer\Installer\LibraryInstaller;
 
+/**
+ * Arikaim package installer class
+ */
 class ArikaimInstaller extends LibraryInstaller
 {
     /**
@@ -26,9 +29,7 @@ class ArikaimInstaller extends LibraryInstaller
         'arikaim-extension'          => 'arikaim/extensions',
         'arikaim-library'            => 'arikaim/view/library',         
         'arikaim-components-library' => 'arikaim/view/components',    
-        'arikaim-project'            => '/',    
-        // deprecated
-        'arikaim-component' => 'arikaim/view/components'  
+        'arikaim-project'            => '/'
     ];
 
     /**
