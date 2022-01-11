@@ -19,6 +19,27 @@ use Composer\Plugin\PluginInterface;
 class InstallerPlugin implements PluginInterface
 {
     /**
+     * Composer ref
+     *
+     * @var Composer
+     */
+    protected $composer;
+
+    /**
+     * io ref
+     *
+     * @var IOInterface
+     */
+    protected $io;
+
+    /**
+     * Installer ref
+     *
+     * @var object
+     */
+    protected $installer;
+
+    /**
      * Activate plugin
      *
      * @param Composer $composer
@@ -27,8 +48,10 @@ class InstallerPlugin implements PluginInterface
      */
     public function activate(Composer $composer, IOInterface $io)
     {
-        $installer = new ArikaimInstaller($io,$composer);
-        $composer->getInstallationManager()->addInstaller($installer);
+        $this->composer = $composer;
+        $this->io = $io;
+        $this->installer = new ArikaimInstaller($io,$composer);
+        $composer->getInstallationManager()->addInstaller($this->installer);
     }
 
     /**
@@ -39,9 +62,7 @@ class InstallerPlugin implements PluginInterface
      * @return void
      */
     public function deactivate(Composer $composer, IOInterface $io)
-    {
-        $installer = new ArikaimInstaller($io,$composer);
-        $composer->getInstallationManager()->removeInstaller($installer);
+    {        
     }
 
     /**
